@@ -56,7 +56,6 @@
     - "php7-xmlwriter"
     - "php7-zip"
     - "php7-zlib"
-    - "composer"
     - "mariadb-client"
     - "rsync"
     - "openssh-client"
@@ -72,6 +71,14 @@
       - "passlib"
       - "PyMySQL"
     extra_args: "--ignore-installed --no-cache-dir"
+- name: Install composer
+  get_url:
+    url: "https://getcomposer.org/download/2.0.12/composer.phar"
+    dest: "/usr/bin/composer"
+    owner: "apache"
+    group: "apache"
+    mode: "u=rx,g=rx,o="
+    sha256sum: "82ea8c1537cfaceb7e56f6004c7ccdf99ddafce7237c07374d920e635730a631"
 - name: Ensure key directories are owned by apache
   file:
     path: "{{ item }}"
